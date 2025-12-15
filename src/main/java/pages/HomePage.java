@@ -19,4 +19,9 @@ public RegisterPage ClickAccountLinkButton(){
     return new RegisterPage(driver);
 }
 
+public LoginPage ClickAccountLinkButtonToLogin(){
+    clickLinks("Account");
+    return new LoginPage(driver);
+}
+
 }
