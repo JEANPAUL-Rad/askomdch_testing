@@ -41,8 +41,12 @@ public StorePage clickStoreLink(){
         return new StorePage(driver);
     }
 
-public HoverPage hoveringOnCartIcon(){
-return new HoverPage(driver);
-}
+    public HoverPage hoveringOnCartIcon(){
+     return new HoverPage(driver);
+    }
+    public DropDownPage clickOnDropDown(){
+        clickLinks("Store");
+        return new DropDownPage(driver);
+    }
 
 }

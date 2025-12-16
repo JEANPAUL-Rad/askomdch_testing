@@ -17,7 +17,7 @@ public class HoverPage {
 
     public HoverPage(WebDriver driver){
         this.driver = driver;
-        this.wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+        this.wait = new WebDriverWait(driver, Duration.ofSeconds(20));
     }
 
     public void hoverCartIcon(){
@@ -32,7 +32,7 @@ public class HoverPage {
         } catch (InterruptedException e){
             e.printStackTrace();
         }
-        System.out.println("✅ Hover completed successfully!");
+
     }
 
 
