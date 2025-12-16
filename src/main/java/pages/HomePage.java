@@ -48,5 +48,10 @@ public StorePage clickStoreLink(){
         clickLinks("Store");
         return new DropDownPage(driver);
     }
+    public SearchPage clickOnSearch(){
+    clickLinks("Store");
+    return new SearchPage(driver);
+    }
+
 
 }
