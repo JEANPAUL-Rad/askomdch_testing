@@ -24,4 +24,8 @@ public LoginPage ClickAccountLinkButtonToLogin(){
     return new LoginPage(driver);
 }
 
+public HoverPage hoveringOnCartIcon(){
+return new HoverPage(driver);
+}
+
 }

@@ -1,9 +1,10 @@
+package login;
+
 import base.BaseTests;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.testng.annotations.Test;
 import pages.Dashboardpage;
-import pages.HomePage;
 import pages.LoginPage;
 
 import static org.testng.Assert.assertTrue;
