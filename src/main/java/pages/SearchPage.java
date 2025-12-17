@@ -25,6 +25,11 @@ public class SearchPage {
     public ProductPage getSearchButton() {
         wait.until(ExpectedConditions.visibilityOfElementLocated(searchButton));
         driver.findElement(searchButton).click();
+        try {
+            Thread.sleep(5000);
+        } catch (InterruptedException e){
+            e.printStackTrace();
+        }
         return new ProductPage(driver);
     }
 }
