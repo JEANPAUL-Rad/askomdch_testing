@@ -25,5 +25,11 @@ public class StorePage {
         }
     }
 
+    public FilterByPriceRangePage getFilterPage(){
+        return new FilterByPriceRangePage(driver);
+    }
+
+
+
 
 }

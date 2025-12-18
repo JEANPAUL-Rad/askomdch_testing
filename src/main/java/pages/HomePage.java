@@ -52,6 +52,11 @@ public StorePage clickStoreLink(){
     clickLinks("Store");
     return new SearchPage(driver);
     }
+    public FilterByPriceRangePage clickOnFilter(){
+        clickLinks("Store");
+        return new FilterByPriceRangePage(driver);
+    }
+
 
 
 }
