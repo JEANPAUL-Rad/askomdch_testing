@@ -6,7 +6,6 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
-
 import java.time.Duration;
 
 public class ProductPage {
@@ -53,7 +52,6 @@ public class ProductPage {
                 e.printStackTrace();
             }
         }
-        System.out.println("The decreasing quantity by pressing arrow down " + times + " times");
     }
 
     public String getCurrentQuantity(){

@@ -22,7 +22,7 @@ public class DropDownPage {
         wait.until(ExpectedConditions.visibilityOfElementLocated(dropDown));
         findDropDownElement().selectByIndex(5);
     }
-    // this the helper function for selectin element in dropdown above
+
     public Select findDropDownElement(){
         return new Select(driver.findElement(dropDown));
     }
