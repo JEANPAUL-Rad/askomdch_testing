@@ -10,7 +10,7 @@ import org.testng.annotations.BeforeMethod;
 import pages.HomePage;
 
 public class BaseTests {
-    private WebDriver driver;
+    protected WebDriver driver;
     protected HomePage homepage;
 
     @BeforeClass
@@ -36,7 +36,7 @@ public class BaseTests {
     @AfterClass
 
     public void tearDown(){
-        //driver.quit();
+        driver.quit();
     }
 
 }
