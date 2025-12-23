@@ -72,4 +72,5 @@ public class ProductPage {
         return driver.findElement(product).getText();
     }
 
+
 }
