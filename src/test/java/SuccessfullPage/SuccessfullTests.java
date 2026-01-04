@@ -1,19 +1,16 @@
-package checkout;
+package SuccessfullPage;
 
 import base.BaseTests;
+import com.sun.source.tree.AssertTree;
 import org.testng.Assert;
 import org.testng.annotations.Test;
-import pages.CartPage;
-import pages.CheckoutPage;
-import pages.ProductPage;
-import pages.SearchPage;
+import pages.*;
 
-public class CheckOutTests extends BaseTests {
+import static org.testng.Assert.assertTrue;
 
+public class SuccessfullTests extends BaseTests {
     @Test
-    public void successfulCheckout() {
-
-
+    public void CheckSuccessCheckout(){
         SearchPage searchPage = homepage.clickOnSearch();
         searchPage.setSearchInput("Anchor Bracelet");
 
@@ -25,7 +22,7 @@ public class CheckOutTests extends BaseTests {
         CheckoutPage checkoutPage = cartPage.clickProceedToCheckout();
 
 
-        Assert.assertTrue(checkoutPage.isOnCheckoutPage(), "Not on checkout page");
+        assertTrue(checkoutPage.isOnCheckoutPage(), "Not on checkout page");
 
 
         checkoutPage.selectCountry("Rwanda");
@@ -40,7 +37,11 @@ public class CheckOutTests extends BaseTests {
         checkoutPage.setEmail("musa@gmail.com");
 
         checkoutPage.selectCashOnDelivery();
-        checkoutPage.clickPlaceOrder();
+        //checkoutPage.clickPlaceOrder();
+        ViewSuccessfulOrderPage viewSuccessfulOrderPage = checkoutPage.clickPlaceOrder();
+        assertTrue(viewSuccessfulOrderPage.isOrderSuccessful(),
+                "Thank you. Your order has been received.");
 
     }
+
 }

@@ -20,7 +20,7 @@ public class CheckoutPage {
     private By companyName = By.id("billing_company");
     private By streetAddress = By.id("billing_address_1");
     private By town = By.id("billing_city");
-    private By state = By.id("billing_state");
+    private By stateInput = By.id("billing_state");
     private By postCode = By.id("billing_postcode");
     private By phone = By.id("billing_phone");
     private By email = By.id("billing_email");
@@ -33,6 +33,7 @@ public class CheckoutPage {
 
     private By cashOnDeliveryRadio = By.id("payment_method_cod");
     private By placeOrderButton = By.id("place_order");
+    private By blockOverlay = By.cssSelector(".blockUI.blockOverlay");
 
     public CheckoutPage(WebDriver driver) {
         this.driver = driver;
@@ -64,7 +65,9 @@ public class CheckoutPage {
     }
 
     public void setState(String stateName) {
-        driver.findElement(state).sendKeys(stateName);
+        WebElement state = wait.until(ExpectedConditions.elementToBeClickable(stateInput));
+        state.clear();
+        state.sendKeys(stateName);
     }
 
     public void setPostCode(String zip) {
@@ -86,19 +89,39 @@ public class CheckoutPage {
 
     public void selectCountry(String country) {
         wait.until(ExpectedConditions.elementToBeClickable(countryDropdown)).click();
+
         wait.until(ExpectedConditions.visibilityOfElementLocated(countrySearchInput))
                 .sendKeys(country + Keys.ENTER);
+
+        wait.until(ExpectedConditions.and(
+                ExpectedConditions.presenceOfElementLocated(stateInput),
+                ExpectedConditions.elementToBeClickable(stateInput)
+        ));
     }
 
 
-    public void selectCashOnDelivery() {
-        WebElement radio = wait.until(ExpectedConditions.elementToBeClickable(cashOnDeliveryRadio));
-        if (!radio.isSelected()) {
-            radio.click();
+
+
+        public void selectCashOnDelivery() {
+
+            // WAIT until WooCommerce AJAX overlay disappears
+            wait.until(ExpectedConditions.invisibilityOfElementLocated(blockOverlay));
+
+            WebElement radio =
+                    wait.until(ExpectedConditions.elementToBeClickable(cashOnDeliveryRadio));
+
+            if (!radio.isSelected()) {
+                radio.click();
+            }
+
+            // OPTIONAL: wait again in case payment triggers another reload
+            wait.until(ExpectedConditions.invisibilityOfElementLocated(blockOverlay));
         }
-    }
 
-    public void clickPlaceOrder() {
+
+
+    public ViewSuccessfulOrderPage clickPlaceOrder() {
         wait.until(ExpectedConditions.elementToBeClickable(placeOrderButton)).click();
+        return new ViewSuccessfulOrderPage(driver);
     }
 }
