@@ -1,16 +1,12 @@
 package pages;
 
 import org.openqa.selenium.*;
-import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
-
-import java.time.Duration;
 import java.util.ArrayList;
 import java.util.List;
 
 public class FilterByPriceRangePage {
     private WebDriver driver;
-    private WebDriverWait wait;
     private JavascriptExecutor js;
 
     private By filterButton = By.className("button");

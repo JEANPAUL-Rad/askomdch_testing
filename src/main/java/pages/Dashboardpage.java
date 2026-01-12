@@ -15,4 +15,7 @@ public class Dashboardpage {
     public String getDashboardParagraph(){
         return driver.findElement(getDashboardPage).getText();
     }
+    public LogoutPage logout() {
+        return new LogoutPage(driver);
+    }
 }

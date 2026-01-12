@@ -5,11 +5,9 @@ import org.testng.Assert;
 import org.testng.annotations.Test;
 import pages.FilterByPriceRangePage;
 import pages.StorePage;
-
 import java.util.List;
 
 public class FilterTests extends BaseTests {
-
     @Test
     public void successfullFilter(){
         StorePage storePage = homepage.clickStoreLink();
